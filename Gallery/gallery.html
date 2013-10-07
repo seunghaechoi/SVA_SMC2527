@@ -1,0 +1,88 @@
+<style type="text/css" media ="screen">
+
+	#image_container{
+		height: 400px;
+		width: 400px;
+	}	
+		
+	#image_container img{
+		display: block;
+		height:100%;
+		
+	}
+	
+</style>
+
+<div class = "wrap">
+	Project:Slideshow_01 
+	<br>
+	<div id="image_container"><img src="1.jpg"></div>
+	<br>
+
+	<button id="previous">Previous</button>
+	<button id="next">Next</button>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+
+	var img = document.querySelector("img");
+
+	//img.src = "http://placehold.it/200x200/303";
+
+	var images = [	 "1.jpg"
+					,"2.jpg"
+					,"3.jpg"
+					,"4.jpg"];
+
+	var index = 0;
+
+	var nextButton = document.querySelector("#next");
+			
+	nextButton.onclick = function()	{
+//		console.log("Next Index Value: ");
+//		console.log(index);
+
+		if (index + 1 < images.length) {
+			index++;	
+		}
+		else {
+			index = 0;
+		}
+		
+		img.src = images[index];
+	}
+	
+	var previousButton = document.querySelector ("#previous");
+	
+	previousButton.onclick = function()	{
+
+		//	console.log("Previous Index Value: ");
+		//	console.log(index);
+
+		/* if index is less than 0, which indicates first pic
+
+			in integer this is possible
+
+			i < 1		
+			i <= 0   are same.
+			
+		if is used for the next step
+		*/
+		
+		if (index <= 0) {
+		
+			// assign last pic to index
+			index = images.length - 1;
+		}
+		else {
+		
+			// if not, decrease index. 
+			index--; 
+		}
+		
+		img.src = images[index];
+	}
+		
+</script>
+
+

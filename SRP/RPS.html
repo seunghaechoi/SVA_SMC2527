@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Seunghae_Exercise_RSP Game</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="author" content="Seungahe Choi" />
+</head>
+
+<body>
+	<div class="wrap" >
+		Exercise_RSP Game<br>
+		
+		<input type="button" value="Scissors" onclick="whowins(0)">
+		<input type="button" value="Rock" onclick="whowins(1)">
+		<input type="button" value="Paper" onclick="whowins(2)"><br>
+
+		<p id="result"></p> 
+		<p id="wl_counter"></p>
+
+		<button id="reset_button">Reset</button>
+	
+	</div>
+</body>
+
+
+<script type="text/javascript" charset="utf-8">
+
+function whowins(player) {
+
+	var resetButton = document.querySelector("#reset_button");
+	resetButton.onclick = function() { return 0; }		
+	var wlcounter = document.querySelector("#wl_counter");
+	
+	//
+	var weapon = ["Scissors", "Rock", "Paper"];
+	
+	//
+	var randomRange = function(min, max) {
+	return (Math.round(Math.random() * (max - min) + min)); }
+	var magicNumber = randomRange(0, weapon.length - 1);
+	
+	//
+	var ohyeah = player - magicNumber;
+	
+	//
+	if ( ohyeah == 1 || ohyeah == -2) {
+		result.innerHTML = "My weapon is " + weapon[magicNumber] + ".<br>You win!!!";
+	} else if ( ohyeah == 0) {
+		result.innerHTML = "My weapon is " + weapon[magicNumber] + ".<br>Tie!!!";	
+	} else result.innerHTML = "My weapon is " + weapon[magicNumber] + ".<br>You Lose!!";
+
+	// For Future Use
+	wlcounter.innerHTML = "Total Game : ";
+}
+
+</script>
+
+</html>
